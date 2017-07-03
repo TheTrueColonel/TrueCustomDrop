@@ -1,0 +1,67 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.thetruecolonel</groupId>
+  <artifactId>TrueCustomDrops-Parent</artifactId>
+  <version>1.0.0</version>
+  <name>True Custom Drops Parent</name>
+  <description>Bringing custom drops plugins back from the dead!</description>
+  <packaging>pom</packaging>
+  
+  <modules>
+  	<module>TrueCustomDrops-Spigot</module>
+  	<module>TrueCustomDrops-Sponge</module>
+  </modules>
+
+	<repositories>
+		<!-- Spigot Repo -->
+		<repository>
+			<id>spigot-repo</id>
+			<url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+		</repository>
+		
+		<!-- Vault Repo -->
+        <repository>
+	        <id>vault-repo</id>
+	        <url>http://nexus.hc.to/content/repositories/pub_releases</url>
+        </repository>
+        
+        <!-- BStats Repo -->
+        <repository>
+			<id>bstats-repo</id>
+			<url>http://repo.bstats.org/content/repositories/releases/</url>
+		</repository>
+	</repositories>
+	
+	<dependencies>
+		<!-- Spigot API -->
+	    <dependency>
+           <groupId>org.spigotmc</groupId>
+           <artifactId>spigot-api</artifactId>
+           <version>1.11.2-R0.1-SNAPSHOT</version>
+           <scope>provided</scope>
+	    </dependency>
+		
+		<!-- Bukkit API -->
+		<dependency>
+			<groupId>org.bukkit</groupId>
+			<artifactId>bukkit</artifactId>
+			<version>1.11.2-R0.1-SNAPSHOT</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<!-- Vault API -->
+        <dependency>
+            <groupId>net.milkbowl.vault</groupId>
+            <artifactId>VaultAPI</artifactId>
+            <version>1.6</version>
+            <scope>provided</scope>
+        </dependency>
+        
+        <!-- BStats API -->
+		<dependency>
+			<groupId>org.bstats</groupId>
+			<artifactId>bstats-bukkit</artifactId>
+			<version>1.1</version>
+		</dependency>
+	</dependencies>
+</project>

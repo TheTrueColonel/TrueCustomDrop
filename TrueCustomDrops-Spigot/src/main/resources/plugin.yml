@@ -1,0 +1,11 @@
+main: ${mainClass}
+name: ${project.name}
+version: ${project.version}
+author: ${author}
+description: ${project.description}
+commands:
+  drops: 
+    description: Gives version.
+    usage: /drops
+    permission: truecustomdrops.info
+    permission-message: You don't have permission to do that!

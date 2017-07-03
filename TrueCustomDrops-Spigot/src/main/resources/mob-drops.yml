@@ -1,0 +1,86 @@
+# Required and spelled like so
+mobs: 
+  # Name of mob, the references are on the spigot page
+  # https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/EntityType.html
+  CHICKEN: 
+    # (Optional) ID list of items to trigger the drop
+    requiredTools: 
+    - 283
+    # (Optional) If the mob drops its regular drops along with the item or not
+    defaultDrops: false
+    # Required and spelled like so
+    drops: 
+      # Names can be whatever you like
+      Excalibur: 
+        # (Optional) Name just for Ctrl+F searching
+        holderName: "Excalibur/Money"
+        # (Optional is money is set) ID of the dropped item
+        id: 267
+        # (Optional if money is set) Trigger block id value || Stone is id 1 dataID 0, Polished Granite is id 1 dataID 2
+        dataID: 0
+        # (Optional) Classes that have access to this drop
+        # If not set, drops work for everyone
+        classes: 
+        - Arthur
+        - GreatWizard
+        # min: 1 || These are both required for variable dropping.
+        # max: 5 || Remove amount if using these
+        amount: 1 # Used if min/max is not set
+        # (Optional) Percentage chance of the drop, if not set, defaults to 100%
+        chance: 0.5
+        # (Optional if id is set) Money holder
+        money: 
+          # Amount of money dropped
+          value: 10000
+          # Percentage chance of money to drop
+          chance: 0.05
+        # (Optional) Meta values holder
+        meta:
+          # (Optional) Display name of the dropped item
+          name: "&6Excalibur"
+          # (Optional) Lore of the dropped item, has to be in quotes
+          lore: 
+            - "'Twas a mighty sword of it's time."
+            - "Now wielded by the next &6&oking&5&o!"
+          # (Optional) Enchantments holder
+          enchants: 
+            # Names can be whatever you like
+            Sharpness: 
+              # ID of the enchantment you'd like
+              # IDs found here: http://minecraft.gamepedia.com/Enchanting/ID
+              id: 16
+              # Level of the enchantment (Max 127)
+              level: 10
+            Unbreaking: 
+              id: 34
+              level: 5
+  # Slime/Magmacube example
+  SLIME:
+    # (Optional) If the mob drops its regular drops along with the item or not
+    defaultDrops: false
+    # (Required for slimes/magmacubes) 1, 2, 3 = Small, Medium, Large
+    size: 1
+    # Required and spelled like so
+    drops: 
+      # Names can be whatever you like
+      Stone: 
+        # (Optional) Name just for Ctrl+F searching
+        holderName: "Stone"
+        # (Optional is money is set) ID of the dropped item
+        id: 1
+        # (Optional if money is set) Trigger block id value || Stone is id 1 dataID 0, Polished Granite is id 1 dataID 2
+        dataID: 0
+        # (Optional) Classes that have access to this drop
+        # If not set, drops work for everyone
+        classes: 
+        - Unlucky
+        min: 1
+        max: 2
+        # (Optional) Percentage chance of the drop, if not set, defaults to 100%
+        chance: 50
+        # (Optional if id is set) Money holder
+        money: 
+          # Amount of money dropped
+          value: 1
+          # Percentage chance of money to drop
+          chance: 0.05
