@@ -1,4 +1,4 @@
-# True Custom Drops [![Build Status](https://travis-ci.org/TheTrueColonel/True-Custom-Drops.svg?branch=master)](https://travis-ci.org/TheTrueColonel/True-Custom-Drops) [![CircleCI](https://circleci.com/gh/TheTrueColonel/True-Custom-Drops.svg?style=svg)](https://circleci.com/gh/TheTrueColonel/True-Custom-Drops)
+# True Custom Drops [![Build Status](https://travis-ci.org/TheTrueColonel/TrueCustomDrops.svg?branch=master)](https://travis-ci.org/TheTrueColonel/TrueCustomDrops) [![CircleCI](https://circleci.com/gh/TheTrueColonel/TrueCustomDrops.svg?style=svg)](https://circleci.com/gh/TheTrueColonel/TrueCustomDrops)
 
 Bringing powerful custom drops plugins back from the dead, and into the latest versions of Minecraft!
 
