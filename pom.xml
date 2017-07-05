@@ -19,6 +19,12 @@
 			<url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
 		</repository>
 		
+		<!-- Sponge Repo -->
+	    <repository>
+	        <id>sponge</id>
+	        <url>https://repo.spongepowered.org/maven</url>
+	    </repository>
+		
 		<!-- Vault Repo -->
         <repository>
 	        <id>vault-repo</id>
@@ -39,6 +45,14 @@
            <artifactId>spigot-api</artifactId>
            <version>1.11.2-R0.1-SNAPSHOT</version>
            <scope>provided</scope>
+	    </dependency>
+	    
+		<!-- Sponge API -->
+	    <dependency>
+	        <groupId>org.spongepowered</groupId>
+	        <artifactId>spongeapi</artifactId>
+	        <version>6.0.0</version>
+	        <scope>provided</scope>
 	    </dependency>
 		
 		<!-- Bukkit API -->
@@ -64,4 +78,5 @@
 			<version>1.1</version>
 		</dependency>
 	</dependencies>
+	
 </project>
