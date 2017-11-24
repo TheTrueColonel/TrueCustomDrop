@@ -1,16 +1,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.thetruecolonel</groupId>
-  <artifactId>TrueCustomDrops-Parent</artifactId>
-  <version>1.0.0</version>
-  <name>True Custom Drops Parent</name>
-  <description>Bringing custom drops plugins back from the dead!</description>
-  <packaging>pom</packaging>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.thetruecolonel</groupId>
+	<artifactId>TrueCustomDrops-Parent</artifactId>
+	<version>1.0.0</version>
+	<name>True Custom Drops Parent</name>
+	<description>Bringing custom drops plugins back from the dead!</description>
+	<packaging>pom</packaging>
   
-  <modules>
-  	<module>TrueCustomDrops-Spigot</module>
-  	<module>TrueCustomDrops-Sponge</module>
-  </modules>
+	<modules>
+		<module>TrueCustomDrops-Spigot</module>
+		<module>TrueCustomDrops-Sponge</module>
+	</modules>
 
 	<repositories>
 		<!-- Spigot Repo -->
@@ -43,7 +43,7 @@
 	    <dependency>
            <groupId>org.spigotmc</groupId>
            <artifactId>spigot-api</artifactId>
-           <version>1.11.2-R0.1-SNAPSHOT</version>
+           <version>1.12-R0.1-SNAPSHOT</version>
            <scope>provided</scope>
 	    </dependency>
 	    
@@ -59,7 +59,7 @@
 		<dependency>
 			<groupId>org.bukkit</groupId>
 			<artifactId>bukkit</artifactId>
-			<version>1.11.2-R0.1-SNAPSHOT</version>
+			<version>1.12-R0.1-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>
 		
@@ -78,5 +78,4 @@
 			<version>1.1</version>
 		</dependency>
 	</dependencies>
-	
 </project>

@@ -2,7 +2,6 @@ package com.thetruecolonel.truecustomdrops.listeners;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -20,12 +19,13 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import com.thetruecolonel.truecustomdrops.BuildConfigurations;
 import com.thetruecolonel.truecustomdrops.TrueCustomDropsSpigot;
+import com.thetruecolonel.truecustomdrops.interfaces.IListener;
 
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.economy.EconomyResponse;
 
 @SuppressWarnings("deprecation")
-public class MobListener implements Listener {
+public class MobListener implements Listener, IListener {
 	// Variables
 	private boolean defaultDrops;
 	private String path = "mobs.";
@@ -47,7 +47,7 @@ public class MobListener implements Listener {
 		economy = e;
 	}
 	
-	@EventHandler(priority=EventPriority.HIGHEST)
+	@EventHandler(priority=EventPriority.LOW)
 	void onEntityDeath (EntityDeathEvent event) {
 		if (event.getEntity().getKiller() instanceof Player) {
 			e = event;
@@ -100,7 +100,7 @@ public class MobListener implements Listener {
 		}
 	}
 	
-	void checkPlayer () {
+	public void checkPlayer () {
 		outerLoop:
 		for (String drop : config.getConfigurationSection(path+".drops").getKeys(false)) {
 			this.drop = drop;
@@ -120,7 +120,7 @@ public class MobListener implements Listener {
 		}
 	}
 	
-	void checkDrop() {
+	public void checkDrop() {
 		path = pathDefault+entity+".drops."+drop;
 		if (config.isSet(path+".id") && config.isSet(path+".money")) {
 			dropItem();
@@ -136,7 +136,7 @@ public class MobListener implements Listener {
 		}
 	}
 	
-	void dropItem () {
+	public void dropItem () {
 		path = pathDefault+entity+".drops."+drop;
 		drops.clear();
 		
@@ -156,7 +156,7 @@ public class MobListener implements Listener {
 		path = pathDefault;
 	}
 	
-	void dropMoney () {
+	public void dropMoney () {
 		path = pathDefault+entity+".drops."+drop+".money";
 		
 		if (config.isSet(path+".chance")) {
@@ -182,7 +182,7 @@ public class MobListener implements Listener {
 		path = pathDefault;
 	}
 	
-	ItemStack createItem () {
+	public ItemStack createItem () {
 		ItemStack item = new ItemStack(config.getInt(path+".id"));
 		
 		if (config.isSet(path+".meta")) {
@@ -220,10 +220,6 @@ public class MobListener implements Listener {
 		
 		return item;
 	}
-	
-	boolean randomChance (double p) { return new Random().nextFloat() <= (p/100) ? true : false; }
-	
-	int randomInt (int minNumber, int maxNumber) { return new Random().nextInt((maxNumber-minNumber)+1)+minNumber; }
 }
 
 
