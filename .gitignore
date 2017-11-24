@@ -3,3 +3,4 @@
 /.settings
 TrueCustomDrops-*/target
 TrueCustomDrops-*/dependency-reduced-pom.xml
+\.idea/workspace\.xml
