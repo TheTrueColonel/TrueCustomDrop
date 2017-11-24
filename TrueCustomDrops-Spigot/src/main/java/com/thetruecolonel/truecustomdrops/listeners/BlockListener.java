@@ -2,7 +2,6 @@ package com.thetruecolonel.truecustomdrops.listeners;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -19,12 +18,13 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import com.thetruecolonel.truecustomdrops.BuildConfigurations;
 import com.thetruecolonel.truecustomdrops.TrueCustomDropsSpigot;
+import com.thetruecolonel.truecustomdrops.interfaces.IListener;
 
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.economy.EconomyResponse;
 
 @SuppressWarnings("deprecation")
-public class BlockListener implements Listener {
+public class BlockListener implements Listener, IListener {
 	// Variables
 	private boolean defaultDrops;
 	private String path = "blocks.";
@@ -45,7 +45,7 @@ public class BlockListener implements Listener {
 		economy = e;
 	}
 	
-	@EventHandler(priority=EventPriority.HIGHEST)
+	@EventHandler(priority=EventPriority.LOW)
 	void onBlockBreak (BlockBreakEvent event) {
 		// Set class event, player, and block references
 		e = event;
@@ -80,7 +80,7 @@ public class BlockListener implements Listener {
 		}
 	}
 	
-	void checkPlayer () {
+	public void checkPlayer () {
 		outerLoop:
 		for (String drop : config.getConfigurationSection(path+".drops").getKeys(false)) {
 			this.drop = drop;
@@ -100,7 +100,7 @@ public class BlockListener implements Listener {
 		}
 	}
 	
-	void checkDrop () {
+	public void checkDrop () {
 		path = pathDefault+worldBlock+".drops."+drop;
 		if (config.isSet(path+".id") && config.isSet(path+".money")) {
 			dropItem();
@@ -116,7 +116,7 @@ public class BlockListener implements Listener {
 		}
 	}
 	
-	void dropItem () {
+	public void dropItem () {
 		path = pathDefault+worldBlock+".drops."+drop;
 		
 		if (!defaultDrops)
@@ -133,7 +133,7 @@ public class BlockListener implements Listener {
 		path = pathDefault;
 	}
 	
-	void dropMoney () {
+	public void dropMoney () {
 		path = pathDefault+worldBlock+".drops."+drop+".money";
 		
 		if (config.isSet(path+".chance")) {
@@ -159,7 +159,7 @@ public class BlockListener implements Listener {
 		path = pathDefault;
 	}
 	
-	ItemStack createItem () {
+	public ItemStack createItem () {
 		ItemStack item = new ItemStack(config.getInt(path+".id"));
 		
 		if (config.isSet(path+".meta")) {
@@ -197,8 +197,4 @@ public class BlockListener implements Listener {
 		
 		return item;
 	}
-	
-	boolean randomChance (double p) { return new Random().nextFloat() <= (p/100) ? true : false; }
-	
-	int randomInt (int minNumber, int maxNumber) { return new Random().nextInt((maxNumber-minNumber)+1)+minNumber; }
 }

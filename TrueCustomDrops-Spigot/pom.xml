@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.thetruecolonel</groupId>
 	<artifactId>TrueCustomDrops-Spigot</artifactId>
-	<version>1.2.3</version>
+	<version>1.2.4</version>
 	<name>TrueCustomDrops</name>
 	<description>Bringing powerful custom drops plugins back from the dead, and into the latest versions of Minecraft!</description>
 	
@@ -32,8 +32,8 @@
 			    <artifactId>maven-compiler-plugin</artifactId>
 			    <version>3.1</version>
 			    <configuration>
-			        <source>1.7</source>
-			        <target>1.7</target>
+			        <source>1.8</source>
+			        <target>1.8</target>
 			    </configuration>
 			</plugin>
 			
@@ -42,6 +42,7 @@
 				<artifactId>maven-shade-plugin</artifactId>
 				<version>2.3</version>
 				<configuration>
+					<createDependencyReducedPom>false</createDependencyReducedPom>
 					<artifactSet>
 						<includes>
 							<include>org.bstats:*</include>
@@ -65,6 +66,7 @@
 			</plugin>
 		</plugins>
 	</build>
+	
 	<parent>
 		<groupId>com.thetruecolonel</groupId>
 		<artifactId>TrueCustomDrops-Parent</artifactId>
