@@ -16,7 +16,7 @@ public class BuildConfigurations extends YamlConfiguration {
 	private File blockConfigFile;
 	private File mobConfigFile;
 	
-	public BuildConfigurations (BuildConfigurations config) {
+	private BuildConfigurations(BuildConfigurations config) {
 		plugin = TrueCustomDropsSpigot.getPlugin(TrueCustomDropsSpigot.class);
 		if (config == blockConfig) {
 			blockConfigFile = new File(plugin.getDataFolder(), "block-drops.yml");
@@ -29,7 +29,7 @@ public class BuildConfigurations extends YamlConfiguration {
 		}
 	}
 	
-	public void reload (BuildConfigurations config) {
+	private void reload(BuildConfigurations config) {
 		if (config == blockConfig) {
 			try {
 				super.load(blockConfigFile);
@@ -44,24 +44,8 @@ public class BuildConfigurations extends YamlConfiguration {
 			}
 		}
 	}
-	
-	public void save (BuildConfigurations config) {
-		if (config == blockConfig) {
-			try {
-				super.save(blockConfigFile);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (config == mobConfig) {
-			try {
-				super.save(mobConfigFile);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-	}
-	
-	public void saveDefault (BuildConfigurations config) {
+
+	private void saveDefault(BuildConfigurations config) {
 		if (config == blockConfig) {
 			if (!blockConfigFile.exists()) {
 				plugin.saveResource("block-drops.yml", false);

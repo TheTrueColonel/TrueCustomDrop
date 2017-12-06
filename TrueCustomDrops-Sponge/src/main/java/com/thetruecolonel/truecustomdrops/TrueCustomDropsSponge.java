@@ -13,7 +13,7 @@ public class TrueCustomDropsSponge {
 	private Logger logger;
 
 	@Listener
-	public void onServerStartEvent (GameStartedServerEvent event) {
-		
+	public void onGameStartedServerEventEvent (GameStartedServerEvent e) {
+		logger.info("Starting TrueCustomDrops...");
 	}
 }

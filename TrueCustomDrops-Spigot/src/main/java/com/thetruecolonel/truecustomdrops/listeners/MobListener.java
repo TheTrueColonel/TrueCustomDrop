@@ -31,7 +31,7 @@ public class MobListener implements Listener, IListener {
 	private String path = "mobs.";
 	private String entity;
 	private String drop;
-	private List<ItemStack> drops = new ArrayList<ItemStack>();
+	private List<ItemStack> drops = new ArrayList<>();
 	
 	private final String pathDefault = "mobs.";
 	
@@ -49,21 +49,21 @@ public class MobListener implements Listener, IListener {
 	
 	@EventHandler(priority=EventPriority.LOW)
 	void onEntityDeath (EntityDeathEvent event) {
-		if (event.getEntity().getKiller() instanceof Player) {
+		if (event.getEntity().getKiller() != null) {
 			e = event;
 			en = e.getEntity();
 			p = en.getKiller();
 			
 			if (p.getGameMode() == GameMode.CREATIVE)
 				return;
-				
+
 			for (String entity : config.getConfigurationSection("mobs").getKeys(false)) {
 				this.entity = entity;
 				path = pathDefault;
 				path += entity;
-				
-				defaultDrops = config.getBoolean(path+".defaultDrops", true);
-				
+
+				defaultDrops = config.getBoolean(path + ".defaultDrops", true);
+
 				if (en.getType().name().equals("SLIME") || en.getType().name().equals("MAGMA_CUBE")) {
 					slimeCheck();
 					break;
@@ -75,7 +75,7 @@ public class MobListener implements Listener, IListener {
 		}
 	}
 	
-	void slimeCheck () {
+	private void slimeCheck() {
 		if (en.getType().name().equals("SLIME")) {
 			if (((Slime)en).getSize() == config.getInt(path+".size"))
 				checkPrelims();
@@ -85,7 +85,7 @@ public class MobListener implements Listener, IListener {
 		}
 	}
 	
-	void checkPrelims () {
+	private void checkPrelims() {
 		if (en.getType().toString().equals(entity)) {
 			if (config.isSet(path+".requiredTools")) {
 				for (Integer id : config.getIntegerList(path+".requiredTools")) {
@@ -193,7 +193,7 @@ public class MobListener implements Listener, IListener {
 				meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', config.getString(metaPath+".name")));
 			
 			if (config.isSet(metaPath+".lore")) {
-				List<String> lore = new ArrayList<String>();
+				List<String> lore = new ArrayList<>();
 				
 				for (String line : config.getStringList(metaPath+".lore")) {
 					lore.add(ChatColor.translateAlternateColorCodes('&', line));
