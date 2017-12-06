@@ -21,15 +21,11 @@ import com.thetruecolonel.truecustomdrops.listeners.MobListener;
 import net.milkbowl.vault.economy.Economy;
 
 public class TrueCustomDropsSpigot extends JavaPlugin {
-	public static FileConfiguration config;
-	public static TrueCustomDropsSpigot plugin;
 
-	public static final Logger log = Logger.getLogger("Minecraft");
-	
-	private File configf;
-	
-	public String version = getDescription().getVersion();
-	public static Economy economy = null;
+	private static final Logger log = Logger.getLogger("Minecraft");
+
+	private String version = getDescription().getVersion();
+	private static Economy economy = null;
 	public static Boolean useVault = false;
 	
 	@Override
@@ -38,9 +34,7 @@ public class TrueCustomDropsSpigot extends JavaPlugin {
 		Metrics metrics = new Metrics(this);
 		
 		createFiles();
-		
-		plugin = this;
-		
+
 		if (getConfig().getBoolean("useVault")) {
 			useVault = true;
 			if (!setupEconomy()) {
@@ -57,11 +51,8 @@ public class TrueCustomDropsSpigot extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new MobListener(economy), this);
 	}
 	
-	@Override
-	public void onDisable () { plugin = null; }
-	
 	private void createFiles () {
-		configf = new File(getDataFolder(), "config.yml");
+		File configf = new File(getDataFolder(), "config.yml");
 		
 		if (!configf.exists()) {
 			configf.getParentFile().mkdirs();
@@ -72,15 +63,13 @@ public class TrueCustomDropsSpigot extends JavaPlugin {
 			config.options().copyDefaults(true);
 			saveConfig();
 		}
-		
-		config = new YamlConfiguration();
+
+		FileConfiguration config1 = new YamlConfiguration();
 		try {
-            config.load(configf);
-        } catch (IOException e) {
+            config1.load(configf);
+        } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
-        } catch (InvalidConfigurationException e) {
-			e.printStackTrace();
-		}
+        }
 	}
 	
 	private boolean setupEconomy () {

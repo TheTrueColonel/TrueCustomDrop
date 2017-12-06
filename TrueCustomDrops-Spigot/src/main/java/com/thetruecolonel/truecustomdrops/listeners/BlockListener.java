@@ -37,7 +37,6 @@ public class BlockListener implements Listener, IListener {
 	private static Economy economy;
 	// Temp variables
 	private static Block b;
-	private static BlockBreakEvent e;
 	private static Player p;
 
 	public BlockListener (Economy e) {
@@ -46,9 +45,8 @@ public class BlockListener implements Listener, IListener {
 	}
 	
 	@EventHandler(priority=EventPriority.LOW)
-	void onBlockBreak (BlockBreakEvent event) {
+	private void onBlockBreak(BlockBreakEvent e) {
 		// Set class event, player, and block references
-		e = event;
 		p = e.getPlayer();
 		b = e.getBlock();
 		
@@ -170,7 +168,7 @@ public class BlockListener implements Listener, IListener {
 				meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', config.getString(metaPath+".name")));
 			
 			if (config.isSet(metaPath+".lore")) {
-				List<String> lore = new ArrayList<String>();
+				List<String> lore = new ArrayList<>();
 				
 				for (String line : config.getStringList(metaPath+".lore")) {
 					lore.add(ChatColor.translateAlternateColorCodes('&', line));

@@ -15,7 +15,7 @@ public interface IListener {
 	
 	ItemStack createItem();
 	
-	default boolean randomChance (double p) { return new Random().nextFloat() <= (p / 100) ? true : false; }
+	default boolean randomChance (double p) { return new Random().nextFloat() <= (p / 100); }
 	
 	default int randomInt (int minNumber, int maxNumber) { return new Random().nextInt((maxNumber - minNumber) + 1) + minNumber; }
 }
