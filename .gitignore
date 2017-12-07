@@ -1,6 +1,4 @@
-/.project
-/.classpath
-/.settings
+/.idea
 TrueCustomDrops-*/target
 TrueCustomDrops-*/dependency-reduced-pom.xml
-\.idea/workspace\.xml
+/*.iml
